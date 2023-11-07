@@ -8,6 +8,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json({ message: "Bad request" }, { status: 500 });
   }
 
+  const fileName =
+    process.env.NODE_ENV === "production"
+      ? data.attach.split("/").pop()
+      : data.attach.split("\\").pop();
+
   try {
     const transporter = nodemailer.createTransport({
       service: "v5787.securen.net",
@@ -32,9 +37,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       <p>We will contact you if you pass our first screening.</p>
       <p>Best regards,</p>
       <p>Ideal Tech PC Team.</p>`,
-      attachments: [
-        { filename: data.attach.split("\\").pop(), path: data.attach },
-      ],
+      attachments: [{ filename: fileName, path: data.attach }],
     };
 
     // transporter.verify(function (error: any, success: any) {
