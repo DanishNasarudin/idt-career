@@ -21,7 +21,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
 
     const mailOption = {
-      from: process.env.EMAIL,
+      from: `Ideal Tech PC <${process.env.EMAIL}>`,
       to: data.email,
       cc: process.env.EMAIL,
       replyTo: data.email,

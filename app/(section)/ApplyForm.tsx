@@ -11,6 +11,11 @@ type Career = {
   content: string;
 };
 
+type Dropdown = {
+  title: string;
+  location: string;
+};
+
 type Props = {};
 
 const ApplyForm = ({}: Props) => {
@@ -18,11 +23,28 @@ const ApplyForm = ({}: Props) => {
 
   const [careers, setCareers] = useState<Career[]>([]);
 
+  const [populateDropdown, setPopulateDropdown] = useState<Dropdown[]>([]);
+
   useEffect(() => {
     fetchCareer().then((careers) => {
       setCareers(careers);
+      let dropdownOptions: Dropdown[] = [];
+      careers.forEach((career) => {
+        const locations = career.location.split(",").map((loc) => loc.trim());
+        locations.forEach((location) => {
+          // Create a string with the title and location
+          const option = `${career.title} - ${location}`;
+          dropdownOptions.push({
+            title: career.title,
+            location: location,
+          });
+        });
+      });
+      setPopulateDropdown(dropdownOptions);
     });
   }, []);
+
+  // console.log(careers, "check career");
 
   const [toggle, setToggle] = useState(false);
 
@@ -79,7 +101,7 @@ const ApplyForm = ({}: Props) => {
     values: {
       name: "",
       email: "",
-      position: "",
+      position: "notSelected",
       attach: undefined,
     },
   };
@@ -87,7 +109,8 @@ const ApplyForm = ({}: Props) => {
   const [formValues, setFormValues] = useState<FormState>(initialFormState);
 
   const { values } = formValues;
-  // console.log(values);
+  // console.log(values, "valies");
+  // console.log(invalidRequired, "invalid");
 
   const [file, setFile] = useState<File>();
   // console.log(file);
@@ -303,10 +326,13 @@ const ApplyForm = ({}: Props) => {
                     value="notSelected"
                     className="font-bold text-black"
                   >{`Choose position`}</option>
-                  {careers.map((career, carKey) => {
+                  {populateDropdown.map((career, carKey) => {
                     return (
-                      <option key={carKey} value={career.title}>
-                        {career.title} | {career.location}
+                      <option
+                        key={carKey}
+                        value={`${career.title} @ ${career.location}`}
+                      >
+                        {career.title} @ {career.location}
                       </option>
                     );
                   })}
@@ -327,7 +353,7 @@ const ApplyForm = ({}: Props) => {
             </div>
             <label htmlFor="attach__label">
               <p>
-                Upload your CV & Portfolio (.pdf)
+                Upload your CV & Portfolio in 1 file (.pdf)
                 <b style={{ color: "red" }}>*</b>
               </p>
             </label>
@@ -355,6 +381,13 @@ const ApplyForm = ({}: Props) => {
                   setFile(e.target.files?.[0]);
                   if (e.target.files?.[0] === undefined) {
                     setInvalidRequired({ ...invalidRequired, attach: true });
+                    setFormValues((prev) => ({
+                      ...prev,
+                      values: {
+                        ...prev.values,
+                        [e.target.name]: undefined,
+                      },
+                    }));
                   } else {
                     setInvalidRequired({ ...invalidRequired, attach: false });
                     setFormValues((prev) => ({
@@ -380,22 +413,32 @@ const ApplyForm = ({}: Props) => {
             <div className="w-full flex justify-center py-4">
               <button
                 className={`
-              py-2 px-4 bg-accent text-secondary font-bold rounded-xl border-transparent
+              py-2 px-4  text-secondary font-bold rounded-xl border-transparent
                          transition-all
                         ${formValues.isLoading ? "bg-green-600" : ""}
                         ${
                           !values.name ||
                           !values.email ||
-                          !values.position ||
-                          !values.attach
-                            ? "mobilehover:hover:bg-zinc-500/50"
-                            : "mobilehover:hover:bg-accent/50"
+                          values.position === "notSelected" ||
+                          !values.attach ||
+                          invalidRequired.name ||
+                          invalidRequired.email ||
+                          invalidRequired.position ||
+                          invalidRequired.attach ||
+                          !invalidFormat.email
+                            ? "mobilehover:hover:bg-zinc-500/50 bg-zinc-500"
+                            : "mobilehover:hover:bg-accent/50 bg-accent"
                         }`}
                 disabled={
                   !values.name ||
                   !values.email ||
-                  !values.position ||
-                  !values.attach
+                  values.position === "notSelected" ||
+                  !values.attach ||
+                  invalidRequired.name ||
+                  invalidRequired.email ||
+                  invalidRequired.position ||
+                  invalidRequired.attach ||
+                  !invalidFormat.email
                 }
                 onClick={handleFileObject}
               >

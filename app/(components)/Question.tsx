@@ -10,15 +10,15 @@ const Question = ({ question, answer }: Props) => {
   const [toggle, setToggle] = useState(false);
   return (
     <div
-      className="flex flex-col gap-4"
+      className="flex flex-col cursor-pointer"
       onClick={() => {
         setToggle(!toggle);
       }}
     >
-      <h3>{question}</h3>
+      <h3 className="mb-4">{question}</h3>
       <div
         className={` ${
-          toggle ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          toggle ? "grid-rows-[1fr] mb-4" : "grid-rows-[0fr]"
         } grid transition-all`}
       >
         <div className="overflow-hidden">

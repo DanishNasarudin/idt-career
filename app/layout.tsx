@@ -55,7 +55,7 @@ export default function RootLayout({
       <body className={`${inter.className} relative`}>
         <Navbar />
         <div className="mx-auto">{children}</div>
-        <div className="h-[50vh]"></div>
+        <div className="h-[30vh]"></div>
         <Footer />
       </body>
     </html>

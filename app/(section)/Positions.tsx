@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Position from "../(components)/Position";
 import fetchCareer from "../(serverActions)/FetchCareer";
@@ -11,6 +12,9 @@ type Career = {
 };
 
 type Props = {};
+
+// Duration to wait between refetches (e.g., 3600 seconds - 1hr)
+const REFETCH_INTERVAL = 3600 * 1000;
 
 const Positions = ({}: Props) => {
   const [careers, setCareers] = useState<Career[]>([]);

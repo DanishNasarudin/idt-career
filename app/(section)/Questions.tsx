@@ -10,7 +10,7 @@ const Questions = ({}: Props) => {
     >
       <div className="w-full sm:w-4/5 mx-auto flex gap-4 px-4 sm:px-0 flex-col">
         <p>You have questions?</p>
-        <h2>
+        <h2 className="mb-4">
           Check out the <b className="text-accent">FAQs</b>
         </h2>
         <Question

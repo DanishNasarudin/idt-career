@@ -36,7 +36,7 @@ async function fetchCareer() {
       Accept: "application/json",
     },
     next: {
-      revalidate: 10,
+      revalidate: 60,
     },
   });
 
