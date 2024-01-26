@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { RiArrowDropDownFill, RiArrowDropLeftFill } from "react-icons/ri";
 import fetchCareer from "../(serverActions)/FetchCareer";
+import * as pixel from "@/lib/fbPixel.js";
 
 type Career = {
   title: string;
@@ -154,6 +155,10 @@ const ApplyForm = ({}: Props) => {
   useEffect(() => {
     const onSubmit = async () => {
       if (!submitReady) return;
+      pixel.event("CompleteRegistration", {
+        content_name: "JobApp",
+        value: "Applied",
+      });
 
       // console.log(formValues.values, "check form");
 

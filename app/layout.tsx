@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
+import FBPixel from "./(components)/FBPixel";
 import Footer from "./(components)/Footer";
 import "./globals.css";
 
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: "/icon?<generated>",
+    apple: "/icon?<generated>",
   },
   appleWebApp: true,
   openGraph: {
@@ -53,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} relative`}>
+        <FBPixel />
         <Navbar />
         <div className="mx-auto">{children}</div>
         <div className="h-[30vh]"></div>
