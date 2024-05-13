@@ -15,7 +15,14 @@ const Question = ({ question, answer }: Props) => {
         setToggle(!toggle);
       }}
     >
-      <h3 className="mb-4">{question}</h3>
+      <div className="flex justify-between items-center mb-4">
+        <h3>{question}</h3>
+        <span
+          className={`rotate-${toggle ? "45" : "0"} transition-all text-lg`}
+        >
+          {"+"}
+        </span>
+      </div>
       <div
         className={` ${
           toggle ? "grid-rows-[1fr] mb-4" : "grid-rows-[0fr]"

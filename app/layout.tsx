@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import FBPixel from "./(components)/FBPixel";
 import Footer from "./(components)/Footer";
 import "./globals.css";
+import ToasterProvider from "@/lib/ToasterProvider";
 
 const Navbar = dynamic(() => import("./(components)/Navbar"), { ssr: false });
 
@@ -55,11 +56,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} relative`}>
-        <FBPixel />
-        <Navbar />
-        <div className="mx-auto">{children}</div>
-        <div className="h-[30vh]"></div>
-        <Footer />
+        <ToasterProvider>
+          <FBPixel />
+          <Navbar />
+          <div className="mx-auto">{children}</div>
+          <div className="h-[30vh]"></div>
+          <Footer />
+        </ToasterProvider>
       </body>
     </html>
   );

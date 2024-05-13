@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const data = await req.json();
-  console.log(data);
+  // console.log(data);
   if (!data.name || !data.email || !data.position || !data.attach) {
     return NextResponse.json({ message: "Bad request" }, { status: 500 });
   }

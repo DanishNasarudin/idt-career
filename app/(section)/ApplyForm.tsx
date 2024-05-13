@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { RiArrowDropDownFill, RiArrowDropLeftFill } from "react-icons/ri";
 import fetchCareer from "../(serverActions)/FetchCareer";
 import * as pixel from "@/lib/fbPixel.js";
+import { toast } from "sonner";
 
 type Career = {
   title: string;
@@ -162,40 +163,49 @@ const ApplyForm = ({}: Props) => {
 
       // console.log(formValues.values, "check form");
 
-      await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(formValues.values),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }).then(() => {
-        setTimeout(() => {
-          setFormValues((prev) => ({
-            ...prev,
-            isLoading: false,
-            values: {
-              ...prev.values,
-              name: "",
-              email: "",
-              position: "",
-              attach: undefined,
-            },
-          }));
-          setCurrentValue("notSelected");
-          setFile(undefined);
-        }, 2000);
+      const sendMail = async () =>
+        await fetch("/api/contact", {
+          method: "POST",
+          body: JSON.stringify(formValues.values),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }).then(() => {
+          setTimeout(() => {
+            setFormValues((prev) => ({
+              ...prev,
+              isLoading: false,
+              values: {
+                ...prev.values,
+                name: "",
+                email: "",
+                position: "",
+                attach: undefined,
+              },
+            }));
+            setCurrentValue("notSelected");
+            setFile(undefined);
+          }, 2000);
 
-        setFormValues((prev) => ({
-          ...prev,
-          isSent: true,
-        }));
-        setTimeout(() => {
           setFormValues((prev) => ({
             ...prev,
-            isSent: false,
+            isSent: true,
           }));
-        }, 1000);
+          setTimeout(() => {
+            setFormValues((prev) => ({
+              ...prev,
+              isSent: false,
+            }));
+          }, 1000);
+        });
+
+      toast.promise(sendMail, {
+        loading: "Submitting...",
+        success: () => {
+          return `Submitted Application!`;
+        },
+        error: "Submission Error.",
       });
       setSubmitReady(false);
     };
