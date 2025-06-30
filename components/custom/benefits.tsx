@@ -87,11 +87,16 @@ export default function Benefits() {
           </div>
         </section>
         <section className="max-w-[700px] w-full flex flex-col gap-4 text-center mx-auto mt-8">
-          <h2>This Is Your Tech Playground.</h2>
-          <p>
+          <h2 className="leading-none">This Is Your Tech Playground.</h2>
+          <p className="hidden md:block">
             We're not just offering a job; we're providing a platform to
             catapult your career in technology. <br /> This is where your
             passion meets your profession.
+          </p>
+          <p className="block md:hidden">
+            We're not just offering a job; we're providing a platform to
+            catapult your career in technology. This is where your passion meets
+            your profession.
           </p>
         </section>
         <section className="w-full mx-auto flex gap-8 justify-center flex-wrap">

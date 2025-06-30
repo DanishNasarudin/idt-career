@@ -21,7 +21,7 @@ export default function Hero() {
             Join the <br /> <b className="text-accent">Ideal</b> Team.
           </h1>
           <p>Find your career path through Ideal Tech PC!</p>
-          <Link href={"#positions"}>
+          <Link href={"/#positions"}>
             <Button
               variant="outline"
               className="py-2 px-4 sm:py-4 sm:px-8 border-white border-[1px] rounded-lg text-xs w-fit mx-auto sm:mt-8 mt-0"

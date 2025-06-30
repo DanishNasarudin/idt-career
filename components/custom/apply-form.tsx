@@ -1,9 +1,10 @@
 "use client";
-import * as pixel from "@/lib/fbPixel.js";
+import * as pixel from "@/services/fb-pixel.js";
 import Link from "next/link";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { RiArrowDropDownFill, RiArrowDropLeftFill } from "react-icons/ri";
 import { toast } from "sonner";
+import { useLocalStorage } from "usehooks-ts";
 
 type Career = {
   title: string;
@@ -19,6 +20,7 @@ type Dropdown = {
 
 const ApplyForm = ({ careersDb }: { careersDb: Career[] }) => {
   const [currentValue, setCurrentValue] = useState("notSelected");
+  const [cookie] = useLocalStorage<boolean | null>("cookieConsent", null);
 
   const careerMemo: Dropdown[] = useMemo(
     () =>
@@ -143,10 +145,12 @@ const ApplyForm = ({ careersDb }: { careersDb: Career[] }) => {
   useEffect(() => {
     const onSubmit = async () => {
       if (!submitReady) return;
-      pixel.event("CompleteRegistration", {
-        content_name: "JobApp",
-        value: "Applied",
-      });
+      if (cookie) {
+        pixel.event("CompleteRegistration", {
+          content_name: "JobApp",
+          value: "Applied",
+        });
+      }
 
       // console.log(formValues.values, "check form");
 
