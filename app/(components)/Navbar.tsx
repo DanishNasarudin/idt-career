@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -18,6 +19,7 @@ function Navbar({}: Props) {
   const [careToggle, setCareToggle] = useState(false);
   const scroll = useScrollListener();
   const [hideNavbar, setHideNavbar] = useState(false);
+  const { setTheme } = useTheme();
   // console.log(scroll);
 
   useEffect(() => {
@@ -38,12 +40,14 @@ function Navbar({}: Props) {
       router.replace("/");
       // console.log("pass");
     }
+    setTheme("dark");
   }, [pathname]);
+
   return (
     <>
       <nav
         className={`
-    bg-primary/80 sticky border-b-[1px] border-[#323232] z-50 transition-all top-0
+    bg-background/80 sticky border-b-[1px] border-border z-50 transition-all top-0
         before:absolute before:w-full before:h-full before:content-[''] before:backdrop-blur-md before:top-0 before:-z-10
     ${hideNavbar ? "translate-y-[-100%]" : ""}
     `}
