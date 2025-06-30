@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 export default function Hero() {
   const imageSize = 300;
@@ -21,11 +22,12 @@ export default function Hero() {
           </h1>
           <p>Find your career path through Ideal Tech PC!</p>
           <Link href={"#positions"}>
-            <button className="py-2 px-4 sm:py-4 sm:px-8 border-white border-[1px] rounded-lg text-xs w-fit mx-auto sm:mt-8 mt-0">
-              <p className="text-[10px] sm:text-sm">
-                <b>Explore Positions</b>
-              </p>
-            </button>
+            <Button
+              variant="outline"
+              className="py-2 px-4 sm:py-4 sm:px-8 border-white border-[1px] rounded-lg text-xs w-fit mx-auto sm:mt-8 mt-0"
+            >
+              Explore Positions
+            </Button>
           </Link>
           <Image
             src="https://idealtech.com.my/wp-content/uploads/2023/10/career-center.webp"
