@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {};
-
-const Hero = (props: Props) => {
+export default function Hero() {
   const imageSize = 300;
   return (
     <div className="max-w-[1060px] mx-auto w-full flex gap-10 relative justify-center items-center h-auto sm:h-[400px] mt-8 px-4">
@@ -51,6 +49,4 @@ const Hero = (props: Props) => {
       />
     </div>
   );
-};
-
-export default Hero;
+}

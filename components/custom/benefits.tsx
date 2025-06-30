@@ -1,8 +1,6 @@
 import Image from "next/image";
 
-type Props = {};
-
-function Benefits({}: Props) {
+export default function Benefits() {
   const imageSize = 300;
   return (
     <div className="bg-white text-black py-16 px-4">
@@ -156,5 +154,3 @@ function Benefits({}: Props) {
     </div>
   );
 }
-
-export default Benefits;

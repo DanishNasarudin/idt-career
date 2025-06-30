@@ -1,13 +1,12 @@
 import ToasterProvider from "@/lib/ToasterProvider";
 import Providers from "@/lib/providers";
 import { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
-import FBPixel from "./(components)/FBPixel";
-import Footer from "./(components)/Footer";
+import Footer from "../components/custom/footer";
+import FBPixel from "../lib/fb-pixel";
 import "./globals.css";
 
-const Navbar = dynamic(() => import("./(components)/Navbar"), { ssr: false });
+// const Navbar = dynamic(() => import("./(components)/Navbar"), { ssr: false });
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,7 +59,7 @@ export default function RootLayout({
         <Providers>
           <ToasterProvider>
             <FBPixel />
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="mx-auto">{children}</div>
             <div className="h-[30vh]"></div>
             <Footer />

@@ -9,7 +9,7 @@ import {
   RiCloseLine,
   RiMenuLine,
 } from "react-icons/ri";
-import { useScrollListener } from "../(hooks)/useScrollListener";
+import { useScrollListener } from "../../lib/hooks/useScrollListener";
 
 type Props = {};
 

@@ -1,8 +1,6 @@
-import Question from "../(components)/Question";
+import Question from "./question";
 
-type Props = {};
-
-const Questions = ({}: Props) => {
+export default function Questions() {
   return (
     <div
       className="max-w-none sm:max-w-[1060px] mx-auto w-full py-16"
@@ -49,6 +47,4 @@ const Questions = ({}: Props) => {
       </div>
     </div>
   );
-};
-
-export default Questions;
+}

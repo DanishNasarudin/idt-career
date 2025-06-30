@@ -1,10 +1,10 @@
 "use client";
 import * as pixel from "@/lib/fbPixel.js";
+import fetchCareer from "@/services/FetchCareer";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { RiArrowDropDownFill, RiArrowDropLeftFill } from "react-icons/ri";
 import { toast } from "sonner";
-import fetchCareer from "../(serverActions)/FetchCareer";
 
 type Career = {
   title: string;
@@ -250,7 +250,7 @@ const ApplyForm = ({}: Props) => {
             <p>
               <input
                 type="text"
-                className={`text-black bg-secondary py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 border-[3px]
+                className={`text-black bg-foreground py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 border-[3px]
             ${invalidRequired.name ? "border-red-500" : "border-transparent"}`}
                 required
                 name="name"
@@ -280,7 +280,7 @@ const ApplyForm = ({}: Props) => {
               <p>
                 <input
                   type="email"
-                  className={`text-black bg-secondary py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 border-[3px]
+                  className={`text-black bg-foreground py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 border-[3px]
                 ${
                   invalidFormat.email ? "border-transparent" : "border-red-500"
                 }`}
@@ -331,7 +331,7 @@ const ApplyForm = ({}: Props) => {
               <p>
                 <select
                   id="position__id"
-                  className="text-black bg-secondary py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 appearance-none cursor-pointer"
+                  className="text-black bg-foreground py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 appearance-none cursor-pointer"
                   onClick={() => {
                     setToggle(!toggle);
                   }}
@@ -377,7 +377,7 @@ const ApplyForm = ({}: Props) => {
             </label>
             <p>
               <button
-                className={`text-black bg-secondary py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 appearance-none cursor-pointer text-left
+                className={`text-black bg-foreground py-2 px-4 w-full max-w-[500px] rounded-lg mt-2 mb-2 appearance-none cursor-pointer text-left
                 ${
                   invalidRequired.attach
                     ? "border-red-500"
@@ -431,7 +431,7 @@ const ApplyForm = ({}: Props) => {
             <div className="w-full flex justify-center py-4">
               <button
                 className={`
-              py-2 px-4  text-secondary font-bold rounded-xl border-transparent
+              py-2 px-4  text-foreground font-bold rounded-xl border-transparent
                          transition-all
                         ${formValues.isLoading ? "bg-green-600" : ""}
                         ${
