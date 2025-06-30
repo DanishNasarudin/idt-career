@@ -20,7 +20,7 @@ export default function Hero() {
           <h1 className="leading-none">
             Join the <br /> <b className="text-accent">Ideal</b> Team.
           </h1>
-          <p>Find your career path through Ideal Tech PC</p>
+          <p>Find your career path through Ideal Tech PC!</p>
           <Link href={"#positions"}>
             <Button
               variant="outline"
