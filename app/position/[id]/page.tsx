@@ -10,7 +10,8 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { data } = await getCachedPositions();
-  const positionId = (await params).id;
+  const { id: rawId } = await params;
+  const positionId = decodeURIComponent(rawId);
   const careers = data.careers.nodes.filter(
     (item) => item.title.toLowerCase().replace(/ /g, "-") === positionId
   );
