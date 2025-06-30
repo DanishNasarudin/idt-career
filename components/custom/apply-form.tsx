@@ -1,8 +1,7 @@
 "use client";
 import * as pixel from "@/lib/fbPixel.js";
-import fetchCareer from "@/services/FetchCareer";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { RiArrowDropDownFill, RiArrowDropLeftFill } from "react-icons/ri";
 import { toast } from "sonner";
 
@@ -18,35 +17,23 @@ type Dropdown = {
   location: string;
 };
 
-type Props = {};
-
-const ApplyForm = ({}: Props) => {
+const ApplyForm = ({ careersDb }: { careersDb: Career[] }) => {
   const [currentValue, setCurrentValue] = useState("notSelected");
 
-  const [careers, setCareers] = useState<Career[]>([]);
+  const careerMemo: Dropdown[] = useMemo(
+    () =>
+      careersDb.length > 0
+        ? careersDb.flatMap((item) => {
+            const locations = item.location.split(",").map((loc) => loc.trim());
 
-  const [populateDropdown, setPopulateDropdown] = useState<Dropdown[]>([]);
-
-  useEffect(() => {
-    fetchCareer().then((careers) => {
-      setCareers(careers);
-      let dropdownOptions: Dropdown[] = [];
-      careers.forEach((career) => {
-        const locations = career.location.split(",").map((loc) => loc.trim());
-        locations.forEach((location) => {
-          // Create a string with the title and location
-          const option = `${career.title} - ${location}`;
-          dropdownOptions.push({
-            title: career.title,
-            location: location,
-          });
-        });
-      });
-      setPopulateDropdown(dropdownOptions);
-    });
-  }, []);
-
-  // console.log(careers, "check career");
+            return locations.map((loc) => ({
+              title: item.title,
+              location: loc,
+            }));
+          })
+        : [],
+    [careersDb]
+  );
 
   const [toggle, setToggle] = useState(false);
 
@@ -344,7 +331,7 @@ const ApplyForm = ({}: Props) => {
                     value="notSelected"
                     className="font-bold text-black"
                   >{`Choose position`}</option>
-                  {populateDropdown.map((career, carKey) => {
+                  {careerMemo.map((career, carKey) => {
                     return (
                       <option
                         key={carKey}

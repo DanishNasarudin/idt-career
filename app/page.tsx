@@ -17,7 +17,7 @@ export default async function Home() {
       <Hero />
       <Benefits />
       <Positions careers={data.careers.nodes} />
-      <ApplyForm />
+      <ApplyForm careersDb={data.careers.nodes} />
       <Questions />
     </main>
   );
