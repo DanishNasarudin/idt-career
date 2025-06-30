@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 type Props = {};
@@ -8,7 +7,7 @@ function Benefits({}: Props) {
   return (
     <div className="bg-white text-black py-16 px-4">
       <div className="max-w-none sm:max-w-[1060px] mx-auto w-full flex flex-col gap-10 text-center">
-        <div className="border-y-[1px] flex flex-col gap-0">
+        <div className="border-y-[1px] border-border/20 flex flex-col gap-0">
           <h1 className="py-8 leading-none">
             Technology Enthusiasts <b className="text-accent">Wanted</b>.
           </h1>

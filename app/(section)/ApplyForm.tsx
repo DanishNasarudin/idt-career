@@ -1,10 +1,10 @@
 "use client";
+import * as pixel from "@/lib/fbPixel.js";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { RiArrowDropDownFill, RiArrowDropLeftFill } from "react-icons/ri";
-import fetchCareer from "../(serverActions)/FetchCareer";
-import * as pixel from "@/lib/fbPixel.js";
 import { toast } from "sonner";
+import fetchCareer from "../(serverActions)/FetchCareer";
 
 type Career = {
   title: string;
@@ -223,7 +223,10 @@ const ApplyForm = ({}: Props) => {
   };
 
   return (
-    <div className="max-w-none sm:max-w-[1060px] mx-auto w-full py-16">
+    <div
+      id="apply"
+      className="max-w-none sm:max-w-[1060px] mx-auto w-full py-16"
+    >
       <div className="w-full sm:w-4/5 mx-auto flex gap-10 px-4 sm:px-0 flex-col sm:flex-row">
         <div className="w-full flex flex-col gap-4 text-center sm:text-left">
           <h2>

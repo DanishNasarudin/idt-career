@@ -1,9 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import fetchCareer from "@/app/(serverActions)/FetchCareer";
+import { Button } from "@/components/ui/button";
 import DOMPurify from "dompurify";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Career = {
   title: string;
@@ -79,6 +81,11 @@ const Position = ({}: Props) => {
                       <div className="border-y-[1px] text-center py-4 mb-8">
                         <h1>{career.title}</h1>
                         <p>{career.location}</p>
+                        <Link href={"/#apply"}>
+                          <Button className="mt-4 bg-accent hover:bg-accent/80 text-white font-bold">
+                            Apply
+                          </Button>
+                        </Link>
                       </div>
                       <div
                         dangerouslySetInnerHTML={{ __html: cleanHTML }}
