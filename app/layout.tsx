@@ -55,7 +55,7 @@ export default function RootLayout({
       <body className={`${inter.className} relative flex flex-col`}>
         <Providers>
           <Navbar />
-          <div className="mx-auto flex-1">{children}</div>
+          <div className="mx-auto flex-1 w-full">{children}</div>
           <div className="h-[30vh]"></div>
           <Footer />
         </Providers>
