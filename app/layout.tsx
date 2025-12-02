@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "Malaysia Job",
   ],
   icons: {
-    icon: "/icon?<generated>",
-    apple: "/icon?<generated>",
+    icon: "/icon.png",
+    apple: "/apple-touch-icon.png",
   },
   appleWebApp: true,
   openGraph: {
