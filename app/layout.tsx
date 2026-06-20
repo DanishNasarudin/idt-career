@@ -1,5 +1,6 @@
 import Navbar from "@/components/custom/navbar";
 import Providers from "@/lib/providers";
+import { getNavbarMenu } from "@/services/navbarActions";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "../components/custom/footer";
@@ -45,16 +46,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const menuList = await getNavbarMenu();
+
   return (
     <html lang="en">
       <body className={`${inter.className} relative flex flex-col`}>
         <Providers>
-          <Navbar />
+          <Navbar menuList={menuList} />
           <div className="mx-auto flex-1 w-full">{children}</div>
           <div className="h-[30vh]"></div>
           <Footer />
