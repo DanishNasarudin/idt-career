@@ -23,8 +23,8 @@ export default function Benefits() {
             </h2>
             <p>
               Join us and be at the forefront of technology. Engage with new
-              gadgets and systems before they hit the shelves. It's not about
-              waiting; it's about leading the charge.
+              gadgets and systems before they hit the shelves. It&apos;s not about
+              waiting; it&apos;s about leading the charge.
             </p>
           </div>
           <div className="flex">
@@ -57,7 +57,7 @@ export default function Benefits() {
               Your Skills.
             </h2>
             <p>
-              Show what you're made of. Put your technical abilities to the test
+              Show what you&apos;re made of. Put your technical abilities to the test
               in an environment that not only expects but requires your
               expertise to shine.
             </p>
@@ -69,8 +69,8 @@ export default function Benefits() {
               Your Growth <br /> Is Our Goal.
             </h2>
             <p>
-              If you're ready to take your career to the next level with a
-              company that's as forward-thinking as you are, we're the right
+              If you&apos;re ready to take your career to the next level with a
+              company that&apos;s as forward-thinking as you are, we&apos;re the right
               fit. Grow, learn, and lead with us.
             </p>
           </div>
@@ -89,12 +89,12 @@ export default function Benefits() {
         <section className="max-w-[700px] w-full flex flex-col gap-4 text-center mx-auto mt-8">
           <h2 className="leading-none">This Is Your Tech Playground.</h2>
           <p className="hidden md:block">
-            We're not just offering a job; we're providing a platform to
+            We&apos;re not just offering a job; we&apos;re providing a platform to
             catapult your career in technology. <br /> This is where your
             passion meets your profession.
           </p>
           <p className="block md:hidden">
-            We're not just offering a job; we're providing a platform to
+            We&apos;re not just offering a job; we&apos;re providing a platform to
             catapult your career in technology. This is where your passion meets
             your profession.
           </p>

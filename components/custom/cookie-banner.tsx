@@ -30,7 +30,7 @@ export default function CookieBanner() {
           </p>
           <div className="space-y-2">
             <p className="text-foreground/60">
-              By clicking "Accept", you agree to our use of cookies.
+              By clicking &quot;Accept&quot;, you agree to our use of cookies.
             </p>
             {/* <Link href={"/cookie"} className="text-primary underline">
               Lean more
